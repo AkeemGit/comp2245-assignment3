@@ -1,8 +1,10 @@
 document.addEventListener('DOMContentLoaded', function(){
     //console.log("Content Loaded");
     let squares = document.querySelectorAll("#board div");
+    let button = document.querySelector(".btn");
     let currentPlayer = 'X';
     let boardState = Array(9).fill(null);
+
     
     
 
@@ -38,9 +40,25 @@ document.addEventListener('DOMContentLoaded', function(){
      }
 
 
-    function checkDraw(){
-        return boardState.every(square => square !== null);
-     }
+    
+    function resetGame(){
+        boardState = Array(9).fill(null);
+        currentPlayer = 'X';
+
+        let message = document.querySelector("#status.you-won");
+        if (message){
+            message.classList.remove("you-won");
+            message.innerHTML = "Move your mouse over a square and click to play an X or an O.";
+        }
+        
+
+        squares.forEach(square => {
+            square.textContent = '';
+            square.className = 'square';
+        });
+
+        
+    }
 
 
 
@@ -78,12 +96,6 @@ document.addEventListener('DOMContentLoaded', function(){
                 //console.log("Won");
             }
 
-            if (checkDraw()){
-                
-                let message = document.querySelector("#status");
-                message.innerHTML = `Congratulations! ${currentPlayer} is the Winner!`;
-            }
-
             //Changing player
             if (currentPlayer === 'X'){
                 currentPlayer = 'O';
@@ -94,6 +106,8 @@ document.addEventListener('DOMContentLoaded', function(){
         });
 
     });
+
+    button.addEventListener('click', resetGame);
     
 
 });
