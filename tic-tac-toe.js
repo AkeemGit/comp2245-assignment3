@@ -7,6 +7,14 @@ document.addEventListener('DOMContentLoaded', function(){
     squares.forEach((square, index) =>{
         square.classList.add('square');
 
+        square.addEventListener('mouseenter', () =>{
+            square.classList.add('hover');
+        });
+
+        square.addEventListener('mouseleave', () =>{
+            square.classList.remove('hover');
+        });
+
         square.addEventListener('click', () => {
             //Preventing box from changing
             if (boardState[index] !== null) return;
@@ -26,10 +34,9 @@ document.addEventListener('DOMContentLoaded', function(){
             }else{
                 currentPlayer = 'X';
             }
-            
-            
-            
+             
         });
+
     });
     
 
