@@ -84,7 +84,7 @@ document.addEventListener('DOMContentLoaded', function(){
             square.textContent = currentPlayer;
 
             //Updating square style based on player
-            square.classList.add(currentPlayer.toLowerCase());
+            square.classList.add(currentPlayer);
 
             
 
